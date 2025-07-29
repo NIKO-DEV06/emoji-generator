@@ -23,13 +23,13 @@ describe('AppController (e2e)', () => {
       const emojis = appService.getEmojis();
       return request(app.getHttpServer())
         .get('/')
-        .set(`x-api-key`, `SECRET`)
+        .set(`x-api-key`, `EDIDI`)
         .set(`user-agent`, `Chrome`)
         .expect(200)
         .expect(({ body }) => {
           const response = body.data;
           expect(response).toBeDefined();
-          expect(response.browser).toBe(`Chrome`);
+          expect(response.browser).toBe(`Chrome Browser`);
           expect(emojis).toContain(response.emoji);
         });
     });
@@ -37,12 +37,12 @@ describe('AppController (e2e)', () => {
       const emojis = appService.getEmojis();
       return request(app.getHttpServer())
         .get('/')
-        .set(`x-api-key`, `SECRET`)
+        .set(`x-api-key`, `EDIDI`)
         .expect(200)
         .expect(({ body }) => {
           const response = body.data;
           expect(response).toBeDefined();
-          expect(response.browser).toBe(`Unknown`);
+          expect(response.browser).toBe(`Unknown User Agent`);
           expect(emojis).toContain(response.emoji);
         });
     });
@@ -57,7 +57,7 @@ describe('AppController (e2e)', () => {
       const emoji = emojis[index];
       return request(app.getHttpServer())
         .get(`/?index=${index}`)
-        .set(`x-api-key`, `SECRET`)
+        .set(`x-api-key`, `EDIDI`)
         .expect(200)
         .expect(({ body }) => {
           const response = body.data;
@@ -67,19 +67,19 @@ describe('AppController (e2e)', () => {
     it(`should return a 400 if an non-number index is passed in`, () => {
       return request(app.getHttpServer())
         .get(`/?index=not-a-number`)
-        .set(`x-api-key`, `SECRET`)
+        .set(`x-api-key`, `EDIDI`)
         .expect(400);
     });
     it(`should return a 400 if an negative index is passed in`, () => {
       return request(app.getHttpServer())
         .get(`/?index=-1`)
-        .set(`x-api-key`, `SECRET`)
+        .set(`x-api-key`, `EDIDI`)
         .expect(400);
     });
-    it(`should return a 400 if an index greater than 14 is passed in`, () => {
+    it(`should return a 400 if an index greater than 10 is passed in`, () => {
       return request(app.getHttpServer())
-        .get(`/?index=15`)
-        .set(`x-api-key`, `SECRET`)
+        .get(`/?index=11`)
+        .set(`x-api-key`, `EDIDI`)
         .expect(400);
     });
   });

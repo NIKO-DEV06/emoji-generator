@@ -5,10 +5,10 @@ export class AppService {
   getEmoji(index?: number): string {
     const emojis = this.getEmojis();
     const emojiIndex = index || Math.floor(Math.random() * emojis.length);
-    return emojis[emojiIndex];
+    return emojis[emojiIndex - 1];
   }
 
   getEmojis() {
-    return ['😀', '😂', '🌟', '🤔', '❤️', '🥳', '🌈', '🤯', '⚡', '🙃', '🎉'];
+    return ['😀', '😂', '🌟', '🤔', '❤️', '🥳', '🌈', '🤯', '🙃', '🎉'];
   }
 }
