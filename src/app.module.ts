@@ -9,9 +9,10 @@ import { BrowserInterceptor } from './common/browser/browser.interceptor';
 import { AllExceptionsFilter } from './common/all-exceptions/all-exceptions.filter';
 import { TranformResponseInterceptor } from './common/tranform-response/tranform-response.interceptor';
 import { EmojiValidationPipe } from './common/emoji-validation/emoji-validation.pipe';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [],
+  imports: [ConfigModule.forRoot()],
   controllers: [AppController],
   providers: [
     AppService,
