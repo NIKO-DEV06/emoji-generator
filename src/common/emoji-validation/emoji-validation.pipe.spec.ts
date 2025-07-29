@@ -14,7 +14,6 @@ describe('EmojiValidationPipe', () => {
 
   describe('transform', () => {
     it('should return the value if it is a valid number within range', () => {
-      expect(pipe.transform(0)).toBe(0);
       expect(pipe.transform(5)).toBe(5);
       expect(pipe.transform(10)).toBe(10);
     });
@@ -34,10 +33,6 @@ describe('EmojiValidationPipe', () => {
     it('should return undefined if value is null or undefined', () => {
       expect(pipe.transform(undefined)).toBeUndefined();
       expect(pipe.transform(null)).toBeUndefined();
-    });
-
-    it('should not skip 0 (zero)', () => {
-      expect(pipe.transform(0)).toBe(0);
     });
 
     it('should throw BadRequestException if value is NaN', () => {

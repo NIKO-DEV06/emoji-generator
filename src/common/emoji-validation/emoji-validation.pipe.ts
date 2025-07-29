@@ -9,7 +9,7 @@ export class EmojiValidationPipe implements PipeTransform {
 
     const numericValue = Number(value);
 
-    if (isNaN(numericValue) || numericValue < 0 || numericValue > 10) {
+    if (isNaN(numericValue) || numericValue < 1 || numericValue > 10) {
       throw new BadRequestException(
         'Invalid index: must be a non-negative from 1 to 10',
       );
