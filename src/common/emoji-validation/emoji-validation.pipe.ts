@@ -11,7 +11,7 @@ export class EmojiValidationPipe implements PipeTransform {
 
     if (isNaN(numericValue) || numericValue < 0 || numericValue > 10) {
       throw new BadRequestException(
-        'Invalid index: must be a non-negative number between 0 and 10',
+        'Invalid index: must be a non-negative from 1 to 10',
       );
     }
 

@@ -54,7 +54,7 @@ describe('AppController (e2e)', () => {
     it(`should return the indexed emoji`, () => {
       const index = 1;
       const emojis = appService.getEmojis();
-      const emoji = emojis[index];
+      const emoji = emojis[index - 1];
       return request(app.getHttpServer())
         .get(`/?index=${index}`)
         .set(`x-api-key`, `EDIDI`)
@@ -64,6 +64,7 @@ describe('AppController (e2e)', () => {
           expect(response.emoji).toBe(emoji);
         });
     });
+
     it(`should return a 400 if an non-number index is passed in`, () => {
       return request(app.getHttpServer())
         .get(`/?index=not-a-number`)
