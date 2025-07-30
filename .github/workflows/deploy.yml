@@ -13,6 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/build
+      - name: Build project
+        run: pnpm run build
       - name: Install Railway CLI
         run: pnpm add --global @railway/cli
       - name: Deploy to Railway
