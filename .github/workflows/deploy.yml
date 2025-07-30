@@ -16,7 +16,7 @@ jobs:
       - name: Install Railway CLI
         run: pnpm add --global @railway/cli
       - name: Deploy to Railway
-        uses: railwayapp/railway-deploy@v2
+        uses: railwayapp/railway-deploy@v1
         with:
           service: emoji-generator
           project: pretty-renewal
