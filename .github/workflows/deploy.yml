@@ -13,18 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/build
-      - name: Build the application
-        run: pnpm run build
       - name: Install Railway CLI
         run: pnpm add --global @railway/cli
-      - name: Login to Railway
-        run: railway login --token $RAILWAY_TOKEN
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
       - name: Deploy to Railway
-        run: |
-          railway login --token $RAILWAY_TOKEN
-          railway status
-          railway up
+        run: railway up --service="emoji-generator"
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
